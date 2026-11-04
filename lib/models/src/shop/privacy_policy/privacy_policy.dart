@@ -4,9 +4,8 @@ part 'privacy_policy.freezed.dart';
 part 'privacy_policy.g.dart';
 
 @freezed
-
 /// The PrivacyPolicy class
-class PrivacyPolicy with _$PrivacyPolicy {
+abstract class PrivacyPolicy with _$PrivacyPolicy {
   /// The PrivacyPolicy constructor
   factory PrivacyPolicy({
     String? body,

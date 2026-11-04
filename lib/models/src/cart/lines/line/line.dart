@@ -8,9 +8,8 @@ part 'line.freezed.dart';
 part 'line.g.dart';
 
 @freezed
-
 /// The cart line
-class Line with _$Line {
+abstract class Line with _$Line {
   const Line._();
 
   /// The cart line constructor
@@ -38,11 +37,12 @@ class Line with _$Line {
       variantId: nodeJson['merchandise'] != null
           ? ProductVariant.fromJson(nodeJson['merchandise']).id
           : null,
-      discountAllocations: (nodeJson['discountAllocations'] != null &&
+      discountAllocations:
+          (nodeJson['discountAllocations'] != null &&
               nodeJson['discountAllocations'] is List)
           ? (nodeJson['discountAllocations'] as List)
-              .map((e) => CartDiscountAllocation.fromJson(e))
-              .toList()
+                .map((e) => CartDiscountAllocation.fromJson(e))
+                .toList()
           : null,
     );
   }

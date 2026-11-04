@@ -9,9 +9,8 @@ part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
-
 /// The order
-class Order with _$Order {
+abstract class Order with _$Order {
   const Order._();
 
   /// The order constructor
@@ -43,42 +42,45 @@ class Order with _$Order {
 
   /// The order from graph json
   factory Order.fromGraphJson(Map<String, dynamic> json) => Order(
-        id: json['node']['id'],
-        email: json['node']['email'] ?? '',
-        currencyCode: json['node']['currencyCode'],
-        customerUrl: json['node']['customerUrl'],
-        lineItems: LineItemsOrder.fromGraphJson(json['node']['lineItems']),
-        name: json['node']['name'] ?? '',
-        orderNumber: json['node']['orderNumber'] ?? 0,
-        phone: json['node']['phone'],
-        processedAt: json['node']['processedAt'],
-        financialStatus: json['node']['financialStatus'],
-        fulfillmentStatus: json['node']['fulfillmentStatus'],
-        shippingAddress: json['node']['shippingAddress'] == null
-            ? null
-            : ShippingAddress.fromJson(json['node']['shippingAddress']),
-        billingAddress: json['node']['billingAddress'] == null
-            ? null
-            : ShippingAddress.fromJson(json['node']['billingAddress']),
-        statusUrl: json['node']['statusUrl'],
-        subtotalPriceV2: PriceV2.fromJson(json['node']['subtotalPriceV2']),
-        totalPriceV2: PriceV2.fromJson(json['node']['totalPriceV2']),
-        totalRefundedV2: PriceV2.fromJson(json['node']['totalRefundedV2']),
-        totalShippingPriceV2:
-            PriceV2.fromJson(json['node']['totalShippingPriceV2']),
-        totalTaxV2: PriceV2.fromJson(json['node']['totalTaxV2']),
-        cursor: json['cursor'],
-        canceledAt: json['node']['canceledAt'],
-        cancelReason: json['node']['cancelReason'],
-        successfulFulfillments: _getSuccessfulFulfilments(
-          json['node']['successfulFulfillments'] ?? [],
-        ),
-      );
+    id: json['node']['id'],
+    email: json['node']['email'] ?? '',
+    currencyCode: json['node']['currencyCode'],
+    customerUrl: json['node']['customerUrl'],
+    lineItems: LineItemsOrder.fromGraphJson(json['node']['lineItems']),
+    name: json['node']['name'] ?? '',
+    orderNumber: json['node']['orderNumber'] ?? 0,
+    phone: json['node']['phone'],
+    processedAt: json['node']['processedAt'],
+    financialStatus: json['node']['financialStatus'],
+    fulfillmentStatus: json['node']['fulfillmentStatus'],
+    shippingAddress: json['node']['shippingAddress'] == null
+        ? null
+        : ShippingAddress.fromJson(json['node']['shippingAddress']),
+    billingAddress: json['node']['billingAddress'] == null
+        ? null
+        : ShippingAddress.fromJson(json['node']['billingAddress']),
+    statusUrl: json['node']['statusUrl'],
+    subtotalPriceV2: PriceV2.fromJson(json['node']['subtotalPriceV2']),
+    totalPriceV2: PriceV2.fromJson(json['node']['totalPriceV2']),
+    totalRefundedV2: PriceV2.fromJson(json['node']['totalRefundedV2']),
+    totalShippingPriceV2: PriceV2.fromJson(
+      json['node']['totalShippingPriceV2'],
+    ),
+    totalTaxV2: PriceV2.fromJson(json['node']['totalTaxV2']),
+    cursor: json['cursor'],
+    canceledAt: json['node']['canceledAt'],
+    cancelReason: json['node']['cancelReason'],
+    successfulFulfillments: _getSuccessfulFulfilments(
+      json['node']['successfulFulfillments'] ?? [],
+    ),
+  );
 
   /// The order from json
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
-  static _getSuccessfulFulfilments(List<dynamic> fulfilments) {
+  static List<SuccessfulFullfilment> _getSuccessfulFulfilments(
+    List<dynamic> fulfilments,
+  ) {
     List<SuccessfulFullfilment> list = [];
     for (var f in fulfilments) {
       list.add(SuccessfulFullfilment.fromGraphJson(f));

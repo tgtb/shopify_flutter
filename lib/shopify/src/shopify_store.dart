@@ -40,9 +40,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Simply returns all Products from your Store.
-  Future<List<Product>> getAllProducts({
-    bool reverse = false,
-  }) async {
+  Future<List<Product>> getAllProducts({bool reverse = false}) async {
     List<Product> productList = [];
     Products tempProduct;
     String? cursor;
@@ -59,8 +57,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      tempProduct =
-          (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
+      tempProduct = (Products.fromGraphJson(
+        (result.data ?? const {})["products"] ?? {},
+      ));
 
       productList += tempProduct.productList;
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
@@ -72,9 +71,12 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
-  Future<List<Product>> getXProductsAfterCursor(int limit, String startCursor,
-      {bool reverse = false,
-      SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE}) async {
+  Future<List<Product>> getXProductsAfterCursor(
+    int limit,
+    String startCursor, {
+    bool reverse = false,
+    SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE,
+  }) async {
     List<Product> productList = [];
     Products tempProduct;
     String cursor = startCursor;
@@ -91,8 +93,9 @@ class ShopifyStore with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    tempProduct =
-        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
+    tempProduct = (Products.fromGraphJson(
+      (result.data ?? const {})["products"] ?? {},
+    ));
     productList += tempProduct.productList;
     return productList;
   }
@@ -100,16 +103,11 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Returns the Products associated to the given id's in [idList]
-  Future<List<Product>?> getProductsByIds(
-    List<String> idList,
-  ) async {
+  Future<List<Product>?> getProductsByIds(List<String> idList) async {
     List<Product>? productList = [];
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductsByIdsQuery),
-      variables: {
-        'ids': idList,
-        'country': ShopifyLocalization.countryCode,
-      },
+      variables: {'ids': idList, 'country': ShopifyLocalization.countryCode},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
@@ -123,7 +121,7 @@ class ShopifyStore with ShopifyError {
       'edges': List.generate(response['nodes'].length, (index) {
         var node = response['nodes'][index];
         return node != null ? {'node': node} : null;
-      }).where((edge) => edge != null).toList()
+      }).where((edge) => edge != null).toList(),
     };
     productList = Products.fromGraphJson(newResponse).productList;
     return productList;
@@ -132,15 +130,10 @@ class ShopifyStore with ShopifyError {
   /// Returns Product.
   ///
   /// Returns Product by [handle]
-  Future<Product?> getProductByHandle(
-    String handle,
-  ) async {
+  Future<Product?> getProductByHandle(String handle) async {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductByHandleQuery),
-      variables: {
-        'handle': handle,
-        'country': ShopifyLocalization.countryCode,
-      },
+      variables: {'handle': handle, 'country': ShopifyLocalization.countryCode},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
@@ -167,9 +160,11 @@ class ShopifyStore with ShopifyError {
   ///  SortKey.PRICE,
   ///  SortKey.ID,
   ///  SortKey.RELEVANCE,
-  Future<List<Product>?> getNProducts(int n,
-      {bool? reverse,
-      SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE}) async {
+  Future<List<Product>?> getNProducts(
+    int n, {
+    bool? reverse,
+    SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE,
+  }) async {
     List<Product>? productList = [];
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getNProductsQuery),
@@ -177,22 +172,20 @@ class ShopifyStore with ShopifyError {
         'n': n,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'country': ShopifyLocalization.countryCode
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    productList =
-        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}))
-            .productList;
+    productList = (Products.fromGraphJson(
+      (result.data ?? const {})["products"] ?? {},
+    )).productList;
     return productList;
   }
 
   /// Returns a list of recommended [Product] by given id.
-  Future<List<Product>?> getProductRecommendations(
-    String productId,
-  ) async {
+  Future<List<Product>?> getProductRecommendations(String productId) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getProductRecommendationsQuery),
@@ -205,11 +198,11 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       var newResponse = List.generate(
-          result.data!['productRecommendations']?.length ?? 0,
-          (index) => {
-                "node":
-                    (result.data!['productRecommendations'] ?? const {})[index]
-              });
+        result.data!['productRecommendations']?.length ?? 0,
+        (index) => {
+          "node": (result.data!['productRecommendations'] ?? const {})[index],
+        },
+      );
       var tempProducts = {"edges": newResponse};
       return Products.fromGraphJson(tempProducts).productList;
     } catch (e) {
@@ -219,9 +212,7 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a List of [Collection]
-  Future<List<Collection>?> getCollectionsByIds(
-    List<String> idList,
-  ) async {
+  Future<List<Collection>?> getCollectionsByIds(List<String> idList) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getCollectionsByIdsQuery),
@@ -230,8 +221,10 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
-          (index) => {"node": (result.data!['nodes'] ?? const {})[index]});
+      var newResponse = List.generate(
+        result.data!['nodes']?.length ?? 0,
+        (index) => {"node": (result.data!['nodes'] ?? const {})[index]},
+      );
       var tempCollection = {"edges": newResponse};
       return Collections.fromGraphJson(tempCollection).collectionList;
     } catch (e) {
@@ -253,9 +246,7 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a collection by handle.
   @Deprecated('Use [getCollectionById]')
-  Future<Collection> getCollectionByHandle(
-    String collectionName,
-  ) async {
+  Future<Collection> getCollectionByHandle(String collectionName) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getFeaturedCollectionQuery),
@@ -297,9 +288,10 @@ class ShopifyStore with ShopifyError {
   /// Returns all available collections.
   ///
   /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
-  Future<List<Collection>> getAllCollections(
-      {SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT,
-      bool reverse = false}) async {
+  Future<List<Collection>> getAllCollections({
+    SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT,
+    bool reverse = false,
+  }) async {
     List<Collection> collectionList = [];
     Collections tempCollection;
     String? cursor;
@@ -310,14 +302,15 @@ class ShopifyStore with ShopifyError {
         variables: {
           'cursor': cursor,
           'sortKey': sortKeyCollection.parseToString(),
-          'reverse': reverse
+          'reverse': reverse,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempCollection = (Collections.fromGraphJson(
-          (result.data ?? const {})['collections'] ?? {}));
+        (result.data ?? const {})['collections'] ?? {},
+      ));
       collectionList.addAll(tempCollection.collectionList);
       cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
     } while ((tempCollection.hasNextPage == true));
@@ -354,17 +347,19 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     collectionList = (Collections.fromGraphJson(
-            (result.data ?? const {})['collections'] ?? {}))
-        .collectionList;
+      (result.data ?? const {})['collections'] ?? {},
+    )).collectionList;
     return collectionList;
   }
 
   /// Returns a List of [Product].
   ///
   /// Returns all Products from the [Collection] with the [id].
-  Future<List<Product>> getAllProductsFromCollectionById(String id,
-      {SortKeyProductCollection sortKeyProductCollection =
-          SortKeyProductCollection.CREATED}) async {
+  Future<List<Product>> getAllProductsFromCollectionById(
+    String id, {
+    SortKeyProductCollection sortKeyProductCollection =
+        SortKeyProductCollection.CREATED,
+  }) async {
     String? cursor;
     List<Product> productList = [];
     Collection collection;
@@ -382,8 +377,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList
-          .addAll(Collection.fromGraphJson(result.data!).products.productList);
+      productList.addAll(
+        Collection.fromGraphJson(result.data!).products.productList,
+      );
       collection = (Collection.fromGraphJson(result.data!));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (collection.products.hasNextPage == true);
@@ -425,7 +421,7 @@ class ShopifyStore with ShopifyError {
         'limit': limit,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'filters': [if (filters != null) filters],
+        'filters': [?filters],
         'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
@@ -457,7 +453,7 @@ class ShopifyStore with ShopifyError {
         'limit': limit,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'filters': [if (filters != null) filters],
+        'filters': [?filters],
         'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
@@ -470,8 +466,12 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
-  Future<List<Product>> getAllProductsOnQuery(String cursor, String query,
-      {SortKeyProduct? sortKey, bool reverse = false}) async {
+  Future<List<Product>> getAllProductsOnQuery(
+    String cursor,
+    String query, {
+    SortKeyProduct? sortKey,
+    bool reverse = false,
+  }) async {
     String? cursor;
     List<Product> productList = [];
     Products products;
@@ -491,9 +491,11 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList.addAll(
-          (Products.fromGraphJson((result.data!)['products'])).productList);
-      products =
-          (Products.fromGraphJson((result.data ?? const {})['products']));
+        (Products.fromGraphJson((result.data!)['products'])).productList,
+      );
+      products = (Products.fromGraphJson(
+        (result.data ?? const {})['products'],
+      ));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (products.hasNextPage == true);
     return productList;
@@ -503,12 +505,16 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
   Future<List<Product>?> getXProductsOnQueryAfterCursor(
-      String query, int limit, String? cursor,
-      {SortKeyProduct? sortKey, bool reverse = false}) async {
+    String query,
+    int limit,
+    String? cursor, {
+    SortKeyProduct? sortKey,
+    bool reverse = false,
+  }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getXProductsOnQueryAfterCursorQuery),
       variables: {
-        if (cursor != null) 'cursor': cursor,
+        'cursor': ?cursor,
         'limit': limit,
         'sortKey': sortKey?.parseToString(),
         'query': query,
@@ -517,8 +523,9 @@ class ShopifyStore with ShopifyError {
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
-    final QueryResult result =
-        await ShopifyConfig.graphQLClient!.query(_options);
+    final QueryResult result = await ShopifyConfig.graphQLClient!.query(
+      _options,
+    );
     checkForError(result);
     return Products.fromGraphJson((result.data ?? const {})['products'])
         .productList;

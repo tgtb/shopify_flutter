@@ -37,7 +37,6 @@ import '../../models/src/checkout/checkout.dart';
 import '../../shopify_config.dart';
 
 @Deprecated('From Shopify API Version 2024-07, use ShopifyCart instead')
-
 /// ShopifyCheckout provides various method in order to work with checkouts.
 class ShopifyCheckout with ShopifyError {
   ShopifyCheckout._();
@@ -57,24 +56,22 @@ class ShopifyCheckout with ShopifyError {
   }) async {
     final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
       document: gql(getCheckoutInfoAboutShipping),
-      variables: {
-        'id': checkoutId,
-      },
+      variables: {'id': checkoutId},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
 
     final WatchQueryOptions _options = WatchQueryOptions(
-      document: gql(_requiresShipping(result) == true && getShippingInfo
-          ? withPaymentId
-              ? getCheckoutInfoWithPaymentId
-              : getCheckoutInfo
-          : withPaymentId
-              ? getCheckoutInfoWithPaymentIdWithoutShipping
-              : getCheckoutInfoWithoutShipping),
-      variables: {
-        'id': checkoutId,
-      },
+      document: gql(
+        _requiresShipping(result) == true && getShippingInfo
+            ? withPaymentId
+                  ? getCheckoutInfoWithPaymentId
+                  : getCheckoutInfo
+            : withPaymentId
+            ? getCheckoutInfoWithPaymentIdWithoutShipping
+            : getCheckoutInfoWithoutShipping,
+      ),
+      variables: {'id': checkoutId},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult _queryResult = (await _graphQLClient!.query(_options));
@@ -99,17 +96,13 @@ class ShopifyCheckout with ShopifyError {
       variables: {
         'checkoutId': checkoutId,
         'input': {
-          if (allowPartialAddresses != null)
-            'allowPartialAddresses': allowPartialAddresses,
+          'allowPartialAddresses': ?allowPartialAddresses,
           if (customAttributes != null)
             'customAttributes': [
               for (var entry in customAttributes.entries)
-                {
-                  'key': entry.key,
-                  'value': entry.value,
-                }
+                {'key': entry.key, 'value': entry.value},
             ],
-          if (note != null) 'note': note,
+          'note': ?note,
         },
       },
     );
@@ -137,12 +130,14 @@ class ShopifyCheckout with ShopifyError {
     // });
     // final QueryResult result =
     //     await ShopifyConfig.graphQLClient!.query(_options);
-    final MutationOptions _options =
-        MutationOptions(document: gql(getAllOrdersQuery), variables: {
-      'accessToken': customerAccessToken,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse
-    });
+    final MutationOptions _options = MutationOptions(
+      document: gql(getAllOrdersQuery),
+      variables: {
+        'accessToken': customerAccessToken,
+        'sortKey': sortKey.parseToString(),
+        'reverse': reverse,
+      },
+    );
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(result);
     final ordersData = result.data!['customer']?['orders'];
@@ -197,9 +192,10 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutShippingAddressUpdateV2'] ??
-                const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutShippingAddressUpdateV2'] ??
+              const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Updates the shipping address on given [checkoutId]
@@ -219,7 +215,7 @@ class ShopifyCheckout with ShopifyError {
         "payment": {
           "paymentAmount": {
             "amount": price.amount,
-            "currencyCode": price.currencyCode
+            "currencyCode": price.currencyCode,
           },
           "idempotencyKey": impotencyKey,
           "billingAddress": {
@@ -229,11 +225,11 @@ class ShopifyCheckout with ShopifyError {
             "province": billingAddress.province,
             "country": billingAddress.country,
             "city": billingAddress.city,
-            "zip": billingAddress.zip
+            "zip": billingAddress.zip,
           },
           "paymentData": tokenizedPayment,
-          "type": type
-        }
+          "type": type,
+        },
       },
     );
     final QueryResult result = await _graphQLClient!.mutate(_options);
@@ -246,17 +242,18 @@ class ShopifyCheckout with ShopifyError {
         const {})['payment']['id'];
   }
 
-  /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
+  /// Helper method for transforming a list of variant ids into a List Of `Map<String, dynamic>` which looks like this:
   ///
   /// [{"quantity":AMOUNT,"variantId":"YOUR_VARIANT_ID"}]
   List<Map<String, dynamic>> transformVariantIdListIntoListOfMaps(
-      List<String> variantIdList) {
+    List<String> variantIdList,
+  ) {
     List<Map<String, dynamic>> lineItemList = [];
     for (var e in variantIdList) {
       if (lineItemList.indexWhere((test) => e == test['variantId']) == -1) {
         lineItemList.add({
           "quantity": variantIdList.where((id) => e == id).toList().length,
-          "variantId": e
+          "variantId": e,
         });
       }
     }
@@ -264,16 +261,10 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Update email of the checkout.
-  Future<Checkout> updateCheckoutEmail(
-    String checkoutId,
-    String email,
-  ) async {
+  Future<Checkout> updateCheckoutEmail(String checkoutId, String email) async {
     final MutationOptions _options = MutationOptions(
       document: gql(checkoutEmailUpdateMutation),
-      variables: {
-        'checkoutId': checkoutId,
-        'email': email,
-      },
+      variables: {'checkoutId': checkoutId, 'email': email},
     );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
@@ -283,8 +274,9 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutEmailUpdateV2'] ?? const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutEmailUpdateV2'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Associates the [Customer] that [customerAccessToken] belongs to, to the [Checkout] that [checkoutId] belongs to.
@@ -293,11 +285,12 @@ class ShopifyCheckout with ShopifyError {
     String customerAccessToken,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(associateCustomer),
-        variables: {
-          'checkoutId': checkoutId,
-          'customerAccessToken': customerAccessToken
-        });
+      document: gql(associateCustomer),
+      variables: {
+        'checkoutId': checkoutId,
+        'customerAccessToken': customerAccessToken,
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -307,12 +300,11 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Disassociates the [Customer] from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutCustomerDisassociate(
-    String checkoutId,
-  ) async {
+  Future<void> checkoutCustomerDisassociate(String checkoutId) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutCustomerDisassociateMutation),
-        variables: {'id': checkoutId});
+      document: gql(checkoutCustomerDisassociateMutation),
+      variables: {'id': checkoutId},
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -327,26 +319,27 @@ class ShopifyCheckout with ShopifyError {
     String discountCode,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutDiscountCodeApplyV2Mutation),
-        variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
+      document: gql(checkoutDiscountCodeApplyV2Mutation),
+      variables: {'checkoutId': checkoutId, 'discountCode': discountCode},
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
       key: 'checkoutDiscountCodeApplyV2',
       errorKey: 'checkoutUserErrors',
     );
-    return Checkout.fromJson(((result.data?['checkoutDiscountCodeApplyV2'] ??
-            const {})['checkout'] ??
-        const {}));
+    return Checkout.fromJson(
+      ((result.data?['checkoutDiscountCodeApplyV2'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutDiscountCodeRemove(
-    String checkoutId,
-  ) async {
+  Future<void> checkoutDiscountCodeRemove(String checkoutId) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutDiscountCodeRemoveMutation),
-        variables: {'checkoutId': checkoutId});
+      document: gql(checkoutDiscountCodeRemoveMutation),
+      variables: {'checkoutId': checkoutId},
+    );
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -361,8 +354,9 @@ class ShopifyCheckout with ShopifyError {
     List<String> giftCardCodes,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutGiftCardsAppendMutation),
-        variables: {'checkoutId': checkoutId, 'giftCardCodes': giftCardCodes});
+      document: gql(checkoutGiftCardsAppendMutation),
+      variables: {'checkoutId': checkoutId, 'giftCardCodes': giftCardCodes},
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -377,40 +371,39 @@ class ShopifyCheckout with ShopifyError {
     Address? shippingAddress,
     String? email,
   }) async {
-    final MutationOptions _options =
-        MutationOptions(document: gql(createCheckoutMutation), variables: {
-      'input': {
-        'allowPartialAddresses': true,
-        if (lineItems != null)
-          'lineItems': [
-            for (var lineItem in lineItems)
-              {
-                'variantId': lineItem.variantId,
-                'quantity': lineItem.quantity,
-                'customAttributes': lineItem.customAttributes
-                    .map((e) => {
-                          'key': e.key,
-                          'value': e.value,
-                        })
-                    .toList(),
-              }
-          ],
-        if (email != null) 'email': email,
-        if (shippingAddress != null)
-          'shippingAddress': {
-            'address1': shippingAddress.address1,
-            'address2': shippingAddress.address2,
-            'city': shippingAddress.city,
-            'company': shippingAddress.company,
-            'country': shippingAddress.country,
-            'firstName': shippingAddress.firstName,
-            'lastName': shippingAddress.lastName,
-            'phone': shippingAddress.phone,
-            'province': shippingAddress.province,
-            'zip': shippingAddress.zip
-          }
-      }
-    });
+    final MutationOptions _options = MutationOptions(
+      document: gql(createCheckoutMutation),
+      variables: {
+        'input': {
+          'allowPartialAddresses': true,
+          if (lineItems != null)
+            'lineItems': [
+              for (var lineItem in lineItems)
+                {
+                  'variantId': lineItem.variantId,
+                  'quantity': lineItem.quantity,
+                  'customAttributes': lineItem.customAttributes
+                      .map((e) => {'key': e.key, 'value': e.value})
+                      .toList(),
+                },
+            ],
+          'email': ?email,
+          if (shippingAddress != null)
+            'shippingAddress': {
+              'address1': shippingAddress.address1,
+              'address2': shippingAddress.address2,
+              'city': shippingAddress.city,
+              'company': shippingAddress.company,
+              'country': shippingAddress.country,
+              'firstName': shippingAddress.firstName,
+              'lastName': shippingAddress.lastName,
+              'phone': shippingAddress.phone,
+              'province': shippingAddress.province,
+              'zip': shippingAddress.zip,
+            },
+        },
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -418,7 +411,8 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     return Checkout.fromJson(
-        ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
+      ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}),
+    );
   }
 
   /// Returns the [Checkout] that [checkoutId] belongs to after adding the [lineItems] to it.
@@ -427,23 +421,21 @@ class ShopifyCheckout with ShopifyError {
     required List<LineItem> lineItems,
   }) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(addLineItemsToCheckoutMutation),
-        variables: {
-          'checkoutId': checkoutId,
-          'lineItems': [
-            for (var lineItem in lineItems)
-              {
-                'variantId': lineItem.variantId,
-                'quantity': lineItem.quantity,
-                'customAttributes': lineItem.customAttributes
-                    .map((e) => {
-                          'key': e.key,
-                          'value': e.value,
-                        })
-                    .toList(),
-              }
-          ],
-        });
+      document: gql(addLineItemsToCheckoutMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'lineItems': [
+          for (var lineItem in lineItems)
+            {
+              'variantId': lineItem.variantId,
+              'quantity': lineItem.quantity,
+              'customAttributes': lineItem.customAttributes
+                  .map((e) => {'key': e.key, 'value': e.value})
+                  .toList(),
+            },
+        ],
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -452,8 +444,9 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutLineItemsAdd'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Returns the [Checkout] that [checkoutId] belongs to after updating the [lineItems] to it.
@@ -462,24 +455,22 @@ class ShopifyCheckout with ShopifyError {
     required List<LineItem> lineItems,
   }) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(updateLineItemsInCheckoutMutation),
-        variables: {
-          'checkoutId': checkoutId,
-          'lineItems': [
-            for (var lineItem in lineItems)
-              {
-                'id': lineItem.id,
-                'variantId': lineItem.variantId,
-                'quantity': lineItem.quantity,
-                'customAttributes': lineItem.customAttributes
-                    .map((e) => {
-                          'key': e.key,
-                          'value': e.value,
-                        })
-                    .toList(),
-              }
-          ],
-        });
+      document: gql(updateLineItemsInCheckoutMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'lineItems': [
+          for (var lineItem in lineItems)
+            {
+              'id': lineItem.id,
+              'variantId': lineItem.variantId,
+              'quantity': lineItem.quantity,
+              'customAttributes': lineItem.customAttributes
+                  .map((e) => {'key': e.key, 'value': e.value})
+                  .toList(),
+            },
+        ],
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -488,8 +479,9 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutLineItemsUpdate'] ?? const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutLineItemsUpdate'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Returns the [Checkout] that [checkoutId] belongs to after removing the [lineItems] from it.
@@ -498,11 +490,12 @@ class ShopifyCheckout with ShopifyError {
     required List<LineItem> lineItems,
   }) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(removeLineItemsFromCheckoutMutation),
-        variables: {
-          'checkoutId': checkoutId,
-          'lineItemIds': [for (var lineItem in lineItems) lineItem.id],
-        });
+      document: gql(removeLineItemsFromCheckoutMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'lineItemIds': [for (var lineItem in lineItems) lineItem.id],
+      },
+    );
 
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
@@ -512,8 +505,9 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutLineItemsRemove'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Removes the Gift card that [appliedGiftCardId] belongs to, from the [Checkout] that [checkoutId] belongs to.
@@ -522,11 +516,12 @@ class ShopifyCheckout with ShopifyError {
     String checkoutId,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutGiftCardRemoveMutation),
-        variables: {
-          'appliedGiftCardId': appliedGiftCardId,
-          'checkoutId': checkoutId
-        });
+      document: gql(checkoutGiftCardRemoveMutation),
+      variables: {
+        'appliedGiftCardId': appliedGiftCardId,
+        'checkoutId': checkoutId,
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -541,11 +536,12 @@ class ShopifyCheckout with ShopifyError {
     String shippingRateHandle,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutShippingLineUpdateMutation),
-        variables: {
-          'shippingRateHandle': shippingRateHandle,
-          'checkoutId': checkoutId
-        });
+      document: gql(checkoutShippingLineUpdateMutation),
+      variables: {
+        'shippingRateHandle': shippingRateHandle,
+        'checkoutId': checkoutId,
+      },
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -554,18 +550,18 @@ class ShopifyCheckout with ShopifyError {
     );
 
     return Checkout.fromJson(
-        ((result.data!['checkoutShippingLineUpdate'] ?? const {})['checkout'] ??
-            const {}));
+      ((result.data!['checkoutShippingLineUpdate'] ?? const {})['checkout'] ??
+          const {}),
+    );
   }
 
   /// Complete [Checkout] without providing payment information.
   /// You can use this mutation for free items or items whose purchase price is covered by a gift card
-  Future<void> checkoutCompleteFree(
-    String checkoutId,
-  ) async {
+  Future<void> checkoutCompleteFree(String checkoutId) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutCompleteFreeMutation),
-        variables: {'checkoutId': checkoutId});
+      document: gql(checkoutCompleteFreeMutation),
+      variables: {'checkoutId': checkoutId},
+    );
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -628,8 +624,9 @@ class ShopifyCheckout with ShopifyError {
       errorKey: 'checkoutUserErrors',
     );
     return TokanizedCheckout.fromJson(
-        ((result.data!['checkoutCompleteWithTokenizedPaymentV3'] ??
-                const {})['payment'] ??
-            const {}));
+      ((result.data!['checkoutCompleteWithTokenizedPaymentV3'] ??
+              const {})['payment'] ??
+          const {}),
+    );
   }
 }

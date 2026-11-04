@@ -7,9 +7,8 @@ part 'line_item_order.freezed.dart';
 part 'line_item_order.g.dart';
 
 @freezed
-
 /// The line item order
-class LineItemOrder with _$LineItemOrder {
+abstract class LineItemOrder with _$LineItemOrder {
   const LineItemOrder._();
 
   /// The line item order constructor
@@ -36,9 +35,11 @@ class LineItemOrder with _$LineItemOrder {
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],
         discountAllocations: _getDiscountAllocationsList(json),
         discountedTotalPrice: PriceV2.fromJson(
-            (json['node'] ?? const {})['discountedTotalPrice']),
-        originalTotalPrice:
-            PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
+          (json['node'] ?? const {})['discountedTotalPrice'],
+        ),
+        originalTotalPrice: PriceV2.fromJson(
+          (json['node'] ?? const {})['originalTotalPrice'],
+        ),
         quantity: (json['node'] ?? const {})['quantity'],
         title: (json['node'] ?? const {})['title'],
         variant: json['node']['variant'] == null
@@ -48,10 +49,13 @@ class LineItemOrder with _$LineItemOrder {
         //     (json['node'] ?? const {})['variant'] ?? const {})
       );
 
-  static _getDiscountAllocationsList(Map<String, dynamic> json) {
+  static List<DiscountAllocations> _getDiscountAllocationsList(
+    Map<String, dynamic> json,
+  ) {
     List<DiscountAllocations> discountList = [];
     (json['node'] ?? const {})['discountAllocations']?.forEach(
-        (discount) => discountList.add(DiscountAllocations.fromJson(discount)));
+      (discount) => discountList.add(DiscountAllocations.fromJson(discount)),
+    );
     return discountList;
   }
 }

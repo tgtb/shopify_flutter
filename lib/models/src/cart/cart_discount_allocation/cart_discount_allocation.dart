@@ -5,15 +5,13 @@ part 'cart_discount_allocation.freezed.dart';
 part 'cart_discount_allocation.g.dart';
 
 @freezed
-
 /// The cart discount allocation
-class CartDiscountAllocation with _$CartDiscountAllocation {
+abstract class CartDiscountAllocation with _$CartDiscountAllocation {
   const CartDiscountAllocation._();
 
   /// The cart discount allocation constructor
-  factory CartDiscountAllocation({
-    required PriceV2? discountedAmount,
-  }) = _CartDiscountAllocation;
+  factory CartDiscountAllocation({required PriceV2? discountedAmount}) =
+      _CartDiscountAllocation;
 
   /// The cart discount allocation from json
   factory CartDiscountAllocation.fromJson(Map<String, dynamic> json) =>

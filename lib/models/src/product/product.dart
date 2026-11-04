@@ -17,7 +17,7 @@ part 'product.g.dart';
 /// The product
 @freezed
 @JsonSerializable(createFactory: false)
-class Product with _$Product {
+abstract class Product with _$Product {
   const Product._();
 
   /// The product constructor
@@ -71,11 +71,12 @@ class Product with _$Product {
   /// It is useful to show the compareAtPrice of the product in the product list
   String compareAtPriceFormattedWithLocale(String? locale) =>
       productVariants.isEmpty
-          ? ''
-          : (productVariants.first.compareAtPrice == null
-              ? ''
-              : productVariants.first.compareAtPrice!
-                  .formattedPriceWithLocale(locale));
+      ? ''
+      : (productVariants.first.compareAtPrice == null
+            ? ''
+            : productVariants.first.compareAtPrice!.formattedPriceWithLocale(
+                locale,
+              ));
 
   /// return bool if compareAtPrice is greater than price
   bool get hasComparablePrice => compareAtPrice > price;
@@ -86,8 +87,8 @@ class Product with _$Product {
   double get compareAtPrice => productVariants.isEmpty
       ? 0
       : (productVariants.first.compareAtPrice == null
-          ? 0
-          : productVariants.first.compareAtPrice!.amount);
+            ? 0
+            : productVariants.first.compareAtPrice!.amount);
 
   /// return the first product variant compareAtPrice formatted or empty string if the list is empty
   ///
@@ -95,8 +96,8 @@ class Product with _$Product {
   String get compareAtPriceFormatted => productVariants.isEmpty
       ? ''
       : (productVariants.first.compareAtPrice == null
-          ? ''
-          : productVariants.first.compareAtPrice!.formattedPrice);
+            ? ''
+            : productVariants.first.compareAtPrice!.formattedPrice);
 
   /// returns first image src or a placeholder image
   ///
@@ -113,14 +114,16 @@ class Product with _$Product {
 
   /// Checks if the product is available for sale by checking its variants availability and quantity
   bool get isAvailableForSale {
-    final temp =
-        productVariants.where((e) => e.title == 'Default Title').toList();
+    final temp = productVariants
+        .where((e) => e.title == 'Default Title')
+        .toList();
     if (temp.isNotEmpty) {
       return temp.first.availableForSale && temp.first.quantityAvailable > 0;
     } else {
       bool isAvailable = false;
-      final variants =
-          productVariants.where((e) => e.title != 'Default Title').toList();
+      final variants = productVariants
+          .where((e) => e.title != 'Default Title')
+          .toList();
       for (int i = 0; i < variants.length; i++) {
         if (variants[i].availableForSale && variants[i].quantityAvailable > 0) {
           isAvailable = true;
@@ -133,27 +136,27 @@ class Product with _$Product {
 
   /// The product from graphjson
   factory Product.fromGraphJson(Map<String, dynamic> json) => Product(
-        collectionList: _getCollectionList(json),
-        id: json['node']?['id'] ?? '',
-        title: json['node']?['title'] ?? '',
-        availableForSale: json['node']?['availableForSale'],
-        createdAt: json['node']?['createdAt'],
-        description: json['node']?['description'] ?? '',
-        productVariants: _getProductVariants(json),
-        descriptionHtml: json['node']?['descriptionHtml'] ?? '',
-        handle: json['node']?['handle'] ?? '',
-        onlineStoreUrl: json['node']?['onlineStoreUrl'] ?? '',
-        productType: json['node']?['productType'] ?? '',
-        publishedAt: json['node']?['publishedAt'],
-        tags: _getTags(json['node']),
-        updatedAt: json['node']?['updatedAt'],
-        images: _getImageList(json),
-        cursor: json['cursor'],
-        options: _getOptionList(json),
-        vendor: json['node']?['vendor'],
-        media: _getMediaList(json),
-        // metafields: _getMetafieldList(json),
-      );
+    collectionList: _getCollectionList(json),
+    id: json['node']?['id'] ?? '',
+    title: json['node']?['title'] ?? '',
+    availableForSale: json['node']?['availableForSale'],
+    createdAt: json['node']?['createdAt'],
+    description: json['node']?['description'] ?? '',
+    productVariants: _getProductVariants(json),
+    descriptionHtml: json['node']?['descriptionHtml'] ?? '',
+    handle: json['node']?['handle'] ?? '',
+    onlineStoreUrl: json['node']?['onlineStoreUrl'] ?? '',
+    productType: json['node']?['productType'] ?? '',
+    publishedAt: json['node']?['publishedAt'],
+    tags: _getTags(json['node']),
+    updatedAt: json['node']?['updatedAt'],
+    images: _getImageList(json),
+    cursor: json['cursor'],
+    options: _getOptionList(json),
+    vendor: json['node']?['vendor'],
+    media: _getMediaList(json),
+    // metafields: _getMetafieldList(json),
+  );
 
   // factory Product.fromJson(Map<String, dynamic> json) =>
   //     _$ProductFromJson(json);
@@ -204,8 +207,9 @@ class Product with _$Product {
               .toList();
         } else {
           return ((variants ?? []) as List).map((v) {
-            Map<String, dynamic> jsonVariant =
-                v is ProductVariant ? v.toJson() : v;
+            Map<String, dynamic> jsonVariant = v is ProductVariant
+                ? v.toJson()
+                : v;
             jsonVariant['price'] = jsonVariant['price'] is PriceV2
                 ? jsonVariant['price'].toJson()
                 : jsonVariant['price'];
@@ -214,15 +218,15 @@ class Product with _$Product {
                 : jsonVariant['unitPrice'];
             jsonVariant['compareAtPrice'] =
                 jsonVariant['compareAtPrice'] is PriceV2
-                    ? jsonVariant['compareAtPrice'].toJson()
-                    : jsonVariant['compareAtPrice'];
+                ? jsonVariant['compareAtPrice'].toJson()
+                : jsonVariant['compareAtPrice'];
             jsonVariant['image'] = jsonVariant['image'] is ShopifyImage
                 ? jsonVariant['image'].toJson()
                 : jsonVariant['image'];
             jsonVariant['unitPriceMeasurement'] =
                 jsonVariant['unitPriceMeasurement'] is UnitPriceMeasurement
-                    ? jsonVariant['unitPriceMeasurement'].toJson()
-                    : jsonVariant['unitPriceMeasurement'];
+                ? jsonVariant['unitPriceMeasurement'].toJson()
+                : jsonVariant['unitPriceMeasurement'];
             jsonVariant['selectedOptions'] = jsonVariant['selectedOptions']
                 ?.map((e) => e is SelectedOption ? e.toJson() : e)
                 ?.toList();
@@ -271,7 +275,8 @@ class Product with _$Product {
   }
 
   static List<AssociatedCollections> _getCollectionList(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     try {
       if (json.containsKey('node')) {
         if (json['node']?['collections'] == null) return [];
@@ -286,7 +291,8 @@ class Product with _$Product {
           return ((list['edges'] ?? []) as List).map((v) {
             final jsonCollection = v is AssociatedCollections ? v.toJson() : v;
             return AssociatedCollections.fromGraphJson(
-                jsonCollection ?? const {});
+              jsonCollection ?? const {},
+            );
           }).toList();
         } else {
           return ((list ?? []) as List).map((v) {

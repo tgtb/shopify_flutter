@@ -4,9 +4,8 @@ part 'payment_settings.freezed.dart';
 part 'payment_settings.g.dart';
 
 @freezed
-
 /// The PaymentSettings class
-class PaymentSettings with _$PaymentSettings {
+abstract class PaymentSettings with _$PaymentSettings {
   /// The PaymentSettings constructor
   factory PaymentSettings({
     List<String>? acceptedCardBrands,

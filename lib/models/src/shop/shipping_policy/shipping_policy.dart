@@ -4,9 +4,8 @@ part 'shipping_policy.freezed.dart';
 part 'shipping_policy.g.dart';
 
 @freezed
-
 /// The ShippingPolicy class
-class ShippingPolicy with _$ShippingPolicy {
+abstract class ShippingPolicy with _$ShippingPolicy {
   /// The ShippingPolicy constructor
   factory ShippingPolicy({
     String? body,

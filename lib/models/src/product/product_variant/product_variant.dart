@@ -10,9 +10,8 @@ part 'product_variant.freezed.dart';
 part 'product_variant.g.dart';
 
 @freezed
-
 /// the product variant
-class ProductVariant with _$ProductVariant {
+abstract class ProductVariant with _$ProductVariant {
   const ProductVariant._();
 
   /// the product variant constructor
@@ -46,11 +45,12 @@ class ProductVariant with _$ProductVariant {
       image: nodeJson['image'] != null
           ? ShopifyImage.fromJson(nodeJson['image'])
           : null,
-      compareAtPrice: nodeJson['compareAtPrice'] != null ||
+      compareAtPrice:
+          nodeJson['compareAtPrice'] != null ||
               nodeJson['compareAtPriceV2'] != null
           ? nodeJson.containsKey('compareAtPrice')
-              ? PriceV2.fromJson(nodeJson['compareAtPrice'])
-              : PriceV2.fromJson(nodeJson['compareAtPriceV2'])
+                ? PriceV2.fromJson(nodeJson['compareAtPrice'])
+                : PriceV2.fromJson(nodeJson['compareAtPriceV2'])
           : null,
       weight: double.tryParse(nodeJson['weight'].toString()) ?? 0.0,
       weightUnit: nodeJson['weightUnit'],

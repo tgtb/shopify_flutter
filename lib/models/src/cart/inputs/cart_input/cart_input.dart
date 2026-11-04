@@ -7,9 +7,8 @@ part 'cart_input.freezed.dart';
 part 'cart_input.g.dart';
 
 @freezed
-
 /// The cart input
-class CartInput with _$CartInput {
+abstract class CartInput with _$CartInput {
   const CartInput._();
 
   /// The cart input constructor

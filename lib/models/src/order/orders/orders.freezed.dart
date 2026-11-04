@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'orders.dart';
@@ -9,181 +9,286 @@ part of 'orders.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Orders _$OrdersFromJson(Map<String, dynamic> json) {
-  return _Orders.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Orders {
-  List<Order> get orderList => throw _privateConstructorUsedError;
-  bool get hasNextPage => throw _privateConstructorUsedError;
+
+ List<Order> get orderList; bool get hasNextPage;
+/// Create a copy of Orders
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$OrdersCopyWith<Orders> get copyWith => _$OrdersCopyWithImpl<Orders>(this as Orders, _$identity);
 
   /// Serializes this Orders to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrdersCopyWith<Orders> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  final _this = this as Orders;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Orders&&const DeepCollectionEquality().equals(other.orderList, _this.orderList)&&(identical(other.hasNextPage, _this.hasNextPage) || other.hasNextPage == _this.hasNextPage));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as Orders;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.orderList),_this.hasNextPage);
+}
+
+@override
+String toString() {
+  final _this = this as Orders;
+  return 'Orders(orderList: ${_this.orderList}, hasNextPage: ${_this.hasNextPage})';
+}
+
+
 }
 
 /// @nodoc
-abstract class $OrdersCopyWith<$Res> {
-  factory $OrdersCopyWith(Orders value, $Res Function(Orders) then) =
-      _$OrdersCopyWithImpl<$Res, Orders>;
-  @useResult
-  $Res call({List<Order> orderList, bool hasNextPage});
-}
+abstract mixin class $OrdersCopyWith<$Res>  {
+  factory $OrdersCopyWith(Orders value, $Res Function(Orders) _then) = _$OrdersCopyWithImpl;
+@useResult
+$Res call({
+ List<Order> orderList, bool hasNextPage
+});
 
+
+
+
+}
 /// @nodoc
-class _$OrdersCopyWithImpl<$Res, $Val extends Orders>
+class _$OrdersCopyWithImpl<$Res>
     implements $OrdersCopyWith<$Res> {
-  _$OrdersCopyWithImpl(this._value, this._then);
+  _$OrdersCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Orders _self;
+  final $Res Function(Orders) _then;
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderList = null,
-    Object? hasNextPage = null,
-  }) {
-    return _then(_value.copyWith(
-      orderList: null == orderList
-          ? _value.orderList
-          : orderList // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
-      hasNextPage: null == hasNextPage
-          ? _value.hasNextPage
-          : hasNextPage // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+/// Create a copy of Orders
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? orderList = null,Object? hasNextPage = null,}) {
+  return _then(Orders(
+orderList: null == orderList ? _self.orderList : orderList // ignore: cast_nullable_to_non_nullable
+as List<Order>,hasNextPage: null == hasNextPage ? _self.hasNextPage : hasNextPage // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$OrdersImplCopyWith<$Res> implements $OrdersCopyWith<$Res> {
-  factory _$$OrdersImplCopyWith(
-          _$OrdersImpl value, $Res Function(_$OrdersImpl) then) =
-      __$$OrdersImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Order> orderList, bool hasNextPage});
 }
 
-/// @nodoc
-class __$$OrdersImplCopyWithImpl<$Res>
-    extends _$OrdersCopyWithImpl<$Res, _$OrdersImpl>
-    implements _$$OrdersImplCopyWith<$Res> {
-  __$$OrdersImplCopyWithImpl(
-      _$OrdersImpl _value, $Res Function(_$OrdersImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderList = null,
-    Object? hasNextPage = null,
-  }) {
-    return _then(_$OrdersImpl(
-      orderList: null == orderList
-          ? _value._orderList
-          : orderList // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
-      hasNextPage: null == hasNextPage
-          ? _value.hasNextPage
-          : hasNextPage // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Orders].
+extension OrdersPatterns on Orders {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Orders value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Orders() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Orders value)  $default,){
+final _that = this;
+switch (_that) {
+case _Orders():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Orders value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Orders() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Order> orderList,  bool hasNextPage)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Orders() when $default != null:
+return $default(_that.orderList,_that.hasNextPage);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Order> orderList,  bool hasNextPage)  $default,) {final _that = this;
+switch (_that) {
+case _Orders():
+return $default(_that.orderList,_that.hasNextPage);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Order> orderList,  bool hasNextPage)?  $default,) {final _that = this;
+switch (_that) {
+case _Orders() when $default != null:
+return $default(_that.orderList,_that.hasNextPage);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OrdersImpl implements _Orders {
-  _$OrdersImpl(
-      {required final List<Order> orderList, required this.hasNextPage})
-      : _orderList = orderList;
 
-  factory _$OrdersImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrdersImplFromJson(json);
+class _Orders implements Orders {
+   _Orders({required  List<Order> orderList, required this.hasNextPage}): _orderList = orderList;
+  factory _Orders.fromJson(Map<String, dynamic> json) => _$OrdersFromJson(json);
 
-  final List<Order> _orderList;
-  @override
-  List<Order> get orderList {
-    if (_orderList is EqualUnmodifiableListView) return _orderList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orderList);
-  }
+ final  List<Order> _orderList;
+@override List<Order> get orderList {
+  if (_orderList is EqualUnmodifiableListView) return _orderList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_orderList);
+}
 
-  @override
-  final bool hasNextPage;
+@override final  bool hasNextPage;
 
-  @override
-  String toString() {
+/// Create a copy of Orders
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OrdersCopyWith<_Orders> get copyWith => __$OrdersCopyWithImpl<_Orders>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$OrdersToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Orders&&const DeepCollectionEquality().equals(other.orderList, _orderList)&&(identical(other.hasNextPage, hasNextPage) || other.hasNextPage == hasNextPage));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_orderList),hasNextPage);
+}
+
+@override
+String toString() {
     return 'Orders(orderList: $orderList, hasNextPage: $hasNextPage)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrdersImpl &&
-            const DeepCollectionEquality()
-                .equals(other._orderList, _orderList) &&
-            (identical(other.hasNextPage, hasNextPage) ||
-                other.hasNextPage == hasNextPage));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_orderList), hasNextPage);
-
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
-      __$$OrdersImplCopyWithImpl<_$OrdersImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrdersImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Orders implements Orders {
-  factory _Orders(
-      {required final List<Order> orderList,
-      required final bool hasNextPage}) = _$OrdersImpl;
 
-  factory _Orders.fromJson(Map<String, dynamic> json) = _$OrdersImpl.fromJson;
-
-  @override
-  List<Order> get orderList;
-  @override
-  bool get hasNextPage;
-
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+abstract mixin class _$OrdersCopyWith<$Res> implements $OrdersCopyWith<$Res> {
+  factory _$OrdersCopyWith(_Orders value, $Res Function(_Orders) _then) = __$OrdersCopyWithImpl;
+@override @useResult
+$Res call({
+ List<Order> orderList, bool hasNextPage
+});
+
+
+
+
+}
+/// @nodoc
+class __$OrdersCopyWithImpl<$Res>
+    implements _$OrdersCopyWith<$Res> {
+  __$OrdersCopyWithImpl(this._self, this._then);
+
+  final _Orders _self;
+  final $Res Function(_Orders) _then;
+
+/// Create a copy of Orders
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? orderList = null,Object? hasNextPage = null,}) {
+  return _then(_Orders(
+orderList: null == orderList ? _self._orderList : orderList // ignore: cast_nullable_to_non_nullable
+as List<Order>,hasNextPage: null == hasNextPage ? _self.hasNextPage : hasNextPage // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

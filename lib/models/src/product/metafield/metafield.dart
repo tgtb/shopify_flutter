@@ -4,9 +4,8 @@ part 'metafield.freezed.dart';
 part 'metafield.g.dart';
 
 @freezed
-
 /// The Metafield class
-class Metafield with _$Metafield {
+abstract class Metafield with _$Metafield {
   const Metafield._();
 
   /// The Metafield constructor
@@ -21,13 +20,13 @@ class Metafield with _$Metafield {
 
   /// The Metafield from graphjson
   factory Metafield.fromGraphJson(Map<String, dynamic> json) => Metafield(
-        id: (json['node'] ?? const {})['id'],
-        key: (json['node'] ?? const {})['key'],
-        namespace: (json['node'] ?? const {})['namespace'],
-        type: (json['node'] ?? const {})['type'],
-        value: (json['node'] ?? const {})['value'],
-        description: (json['node'] ?? const {})['description'],
-      );
+    id: (json['node'] ?? const {})['id'],
+    key: (json['node'] ?? const {})['key'],
+    namespace: (json['node'] ?? const {})['namespace'],
+    type: (json['node'] ?? const {})['type'],
+    value: (json['node'] ?? const {})['value'],
+    description: (json['node'] ?? const {})['description'],
+  );
 
   /// The Metafield from json
   factory Metafield.fromJson(Map<String, dynamic> json) =>

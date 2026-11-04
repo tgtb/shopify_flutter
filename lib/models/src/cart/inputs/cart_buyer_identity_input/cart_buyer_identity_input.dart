@@ -6,9 +6,8 @@ part 'cart_buyer_identity_input.freezed.dart';
 part 'cart_buyer_identity_input.g.dart';
 
 @freezed
-
 /// the cart buyer identity input
-class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
+abstract class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
   const CartBuyerIdentityInput._();
 
   /// the cart buyer identity input constructor
