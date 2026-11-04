@@ -251,7 +251,7 @@ return $default(_that.author,_that.commentList,_that.content,_that.contentHtml,_
 @JsonSerializable()
 
 class _Article extends Article {
-   _Article({required this.author, required  List<Comment>? commentList, required this.content, required this.contentHtml, required this.excerpt, required this.excerptHtml, required this.handle, required this.id, required this.image, required this.publishedAt, required  List<String>? tags, required this.title, required this.onlineStoreUrl}): _commentList = commentList,_tags = tags,super._();
+   _Article({this.author,  List<Comment>? commentList, this.content, this.contentHtml, this.excerpt, this.excerptHtml, this.handle, this.id, this.image, this.publishedAt,  List<String>? tags, this.title, this.onlineStoreUrl}): _commentList = commentList,_tags = tags,super._();
   factory _Article.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
 
 @override final  AuthorV2? author;

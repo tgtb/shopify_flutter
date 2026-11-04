@@ -14,19 +14,19 @@ abstract class Article with _$Article {
 
   /// The article constructor
   factory Article({
-    required AuthorV2? author,
-    required List<Comment>? commentList,
-    required String? content,
-    required String? contentHtml,
-    required String? excerpt,
-    required String? excerptHtml,
-    required String? handle,
-    required String? id,
-    required ShopifyImage? image,
-    required String? publishedAt,
-    required List<String>? tags,
-    required String? title,
-    required String? onlineStoreUrl,
+    AuthorV2? author,
+    List<Comment>? commentList,
+    String? content,
+    String? contentHtml,
+    String? excerpt,
+    String? excerptHtml,
+    String? handle,
+    String? id,
+    ShopifyImage? image,
+    String? publishedAt,
+    List<String>? tags,
+    String? title,
+    String? onlineStoreUrl,
   }) = _Article;
 
   /// The article from json

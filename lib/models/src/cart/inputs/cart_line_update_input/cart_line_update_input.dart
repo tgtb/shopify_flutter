@@ -4,9 +4,8 @@ part 'cart_line_update_input.freezed.dart';
 part 'cart_line_update_input.g.dart';
 
 @freezed
-
 /// The cart line input
-class CartLineUpdateInput with _$CartLineUpdateInput {
+abstract class CartLineUpdateInput with _$CartLineUpdateInput {
   const CartLineUpdateInput._();
 
   /// The cart line input constructor
