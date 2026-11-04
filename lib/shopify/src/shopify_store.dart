@@ -40,9 +40,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Simply returns all Products from your Store.
-  Future<List<Product>> getAllProducts({
-    bool reverse = false,
-  }) async {
+  Future<List<Product>> getAllProducts({bool reverse = false}) async {
     List<Product> productList = [];
     Products tempProduct;
     String? cursor;
@@ -59,8 +57,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      tempProduct =
-          (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
+      tempProduct = (Products.fromGraphJson(
+        (result.data ?? const {})["products"] ?? {},
+      ));
 
       productList += tempProduct.productList;
       cursor = productList.isNotEmpty ? productList.last.cursor : '';

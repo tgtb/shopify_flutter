@@ -5,9 +5,8 @@ part 'line_items.freezed.dart';
 part 'line_items.g.dart';
 
 @freezed
-
 /// The line items
-class LineItems with _$LineItems {
+abstract class LineItems with _$LineItems {
   /// The line items constructor
   factory LineItems({required List<LineItem> lineItemList}) = _LineItems;
 

@@ -4,9 +4,8 @@ part 'option.freezed.dart';
 part 'option.g.dart';
 
 @freezed
-
 /// The Option class
-class Option with _$Option {
+abstract class Option with _$Option {
   const Option._();
 
   /// The Option constructor

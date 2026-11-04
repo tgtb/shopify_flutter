@@ -5,9 +5,8 @@ part 'collection.freezed.dart';
 part 'collection.g.dart';
 
 @freezed
-
 /// The collection
-class Collection with _$Collection {
+abstract class Collection with _$Collection {
   const Collection._();
 
   /// The collection constructor
@@ -42,14 +41,16 @@ class Collection with _$Collection {
       final _realProductVariants = <ProductVariant>[];
       for (final _variant in _product.productVariants) {
         if (_variant.title.toLowerCase().contains('default')) {
-          _realProductVariants
-              .add(_variant.copyWith.call(title: _product.title));
+          _realProductVariants.add(
+            _variant.copyWith.call(title: _product.title),
+          );
         } else {
           _realProductVariants.add(_variant);
         }
       }
-      _realProducts
-          .add(_product.copyWith.call(productVariants: _realProductVariants));
+      _realProducts.add(
+        _product.copyWith.call(productVariants: _realProductVariants),
+      );
     }
 
     _products = _products.copyWith.call(productList: _realProducts);

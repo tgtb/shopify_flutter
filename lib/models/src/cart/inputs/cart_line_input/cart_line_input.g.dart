@@ -6,14 +6,14 @@ part of 'cart_line_input.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CartLineInputImpl _$$CartLineInputImplFromJson(Map<String, dynamic> json) =>
-    _$CartLineInputImpl(
+_CartLineInput _$CartLineInputFromJson(Map<String, dynamic> json) =>
+    _CartLineInput(
       merchandiseId: json['merchandiseId'] as String,
       quantity: (json['quantity'] as num).toInt(),
       sellingPlanId: json['sellingPlanId'] as String?,
     );
 
-Map<String, dynamic> _$$CartLineInputImplToJson(_$CartLineInputImpl instance) =>
+Map<String, dynamic> _$CartLineInputToJson(_CartLineInput instance) =>
     <String, dynamic>{
       'merchandiseId': instance.merchandiseId,
       'quantity': instance.quantity,

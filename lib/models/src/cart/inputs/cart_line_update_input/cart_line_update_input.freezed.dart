@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cart_line_update_input.dart';
@@ -9,220 +9,293 @@ part of 'cart_line_update_input.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CartLineUpdateInput _$CartLineUpdateInputFromJson(Map<String, dynamic> json) {
-  return _CartLine.fromJson(json);
+CartLineUpdateInput _$CartLineUpdateInputFromJson(
+  Map<String, dynamic> json
+) {
+    return _CartLine.fromJson(
+      json
+    );
 }
 
 /// @nodoc
 mixin _$CartLineUpdateInput {
-  String? get id => throw _privateConstructorUsedError;
-  String get merchandiseId => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
-  String? get sellingPlanId => throw _privateConstructorUsedError;
+
+ String? get id; String get merchandiseId; int get quantity; String? get sellingPlanId;
+/// Create a copy of CartLineUpdateInput
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CartLineUpdateInputCopyWith<CartLineUpdateInput> get copyWith => _$CartLineUpdateInputCopyWithImpl<CartLineUpdateInput>(this as CartLineUpdateInput, _$identity);
 
   /// Serializes this CartLineUpdateInput to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of CartLineUpdateInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CartLineUpdateInputCopyWith<CartLineUpdateInput> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  final _this = this as CartLineUpdateInput;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartLineUpdateInput&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.merchandiseId, _this.merchandiseId) || other.merchandiseId == _this.merchandiseId)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.sellingPlanId, _this.sellingPlanId) || other.sellingPlanId == _this.sellingPlanId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as CartLineUpdateInput;
+  return Object.hash(runtimeType,_this.id,_this.merchandiseId,_this.quantity,_this.sellingPlanId);
+}
+
+@override
+String toString() {
+  final _this = this as CartLineUpdateInput;
+  return 'CartLineUpdateInput(id: ${_this.id}, merchandiseId: ${_this.merchandiseId}, quantity: ${_this.quantity}, sellingPlanId: ${_this.sellingPlanId})';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CartLineUpdateInputCopyWith<$Res> {
-  factory $CartLineUpdateInputCopyWith(
-          CartLineUpdateInput value, $Res Function(CartLineUpdateInput) then) =
-      _$CartLineUpdateInputCopyWithImpl<$Res, CartLineUpdateInput>;
-  @useResult
-  $Res call(
-      {String? id, String merchandiseId, int quantity, String? sellingPlanId});
-}
+abstract mixin class $CartLineUpdateInputCopyWith<$Res>  {
+  factory $CartLineUpdateInputCopyWith(CartLineUpdateInput value, $Res Function(CartLineUpdateInput) _then) = _$CartLineUpdateInputCopyWithImpl;
+@useResult
+$Res call({
+ String? id, String merchandiseId, int quantity, String? sellingPlanId
+});
 
+
+
+
+}
 /// @nodoc
-class _$CartLineUpdateInputCopyWithImpl<$Res, $Val extends CartLineUpdateInput>
+class _$CartLineUpdateInputCopyWithImpl<$Res>
     implements $CartLineUpdateInputCopyWith<$Res> {
-  _$CartLineUpdateInputCopyWithImpl(this._value, this._then);
+  _$CartLineUpdateInputCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CartLineUpdateInput _self;
+  final $Res Function(CartLineUpdateInput) _then;
 
-  /// Create a copy of CartLineUpdateInput
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? merchandiseId = null,
-    Object? quantity = null,
-    Object? sellingPlanId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      merchandiseId: null == merchandiseId
-          ? _value.merchandiseId
-          : merchandiseId // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      sellingPlanId: freezed == sellingPlanId
-          ? _value.sellingPlanId
-          : sellingPlanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of CartLineUpdateInput
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
+  return _then(CartLineUpdateInput(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
+as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,sellingPlanId: freezed == sellingPlanId ? _self.sellingPlanId : sellingPlanId // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$CartLineImplCopyWith<$Res>
-    implements $CartLineUpdateInputCopyWith<$Res> {
-  factory _$$CartLineImplCopyWith(
-          _$CartLineImpl value, $Res Function(_$CartLineImpl) then) =
-      __$$CartLineImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id, String merchandiseId, int quantity, String? sellingPlanId});
 }
 
-/// @nodoc
-class __$$CartLineImplCopyWithImpl<$Res>
-    extends _$CartLineUpdateInputCopyWithImpl<$Res, _$CartLineImpl>
-    implements _$$CartLineImplCopyWith<$Res> {
-  __$$CartLineImplCopyWithImpl(
-      _$CartLineImpl _value, $Res Function(_$CartLineImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of CartLineUpdateInput
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? merchandiseId = null,
-    Object? quantity = null,
-    Object? sellingPlanId = freezed,
-  }) {
-    return _then(_$CartLineImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      merchandiseId: null == merchandiseId
-          ? _value.merchandiseId
-          : merchandiseId // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      sellingPlanId: freezed == sellingPlanId
-          ? _value.sellingPlanId
-          : sellingPlanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [CartLineUpdateInput].
+extension CartLineUpdateInputPatterns on CartLineUpdateInput {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CartLine value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CartLine() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CartLine value)  $default,){
+final _that = this;
+switch (_that) {
+case _CartLine():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CartLine value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CartLine() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CartLine() when $default != null:
+return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)  $default,) {final _that = this;
+switch (_that) {
+case _CartLine():
+return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,) {final _that = this;
+switch (_that) {
+case _CartLine() when $default != null:
+return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CartLineImpl extends _CartLine {
-  _$CartLineImpl(
-      {this.id,
-      required this.merchandiseId,
-      required this.quantity,
-      this.sellingPlanId})
-      : super._();
 
-  factory _$CartLineImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CartLineImplFromJson(json);
+class _CartLine extends CartLineUpdateInput {
+   _CartLine({this.id, required this.merchandiseId, required this.quantity, this.sellingPlanId}): super._();
+  factory _CartLine.fromJson(Map<String, dynamic> json) => _$CartLineFromJson(json);
 
-  @override
-  final String? id;
-  @override
-  final String merchandiseId;
-  @override
-  final int quantity;
-  @override
-  final String? sellingPlanId;
+@override final  String? id;
+@override final  String merchandiseId;
+@override final  int quantity;
+@override final  String? sellingPlanId;
 
-  @override
-  String toString() {
+/// Create a copy of CartLineUpdateInput
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CartLineCopyWith<_CartLine> get copyWith => __$CartLineCopyWithImpl<_CartLine>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CartLineToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartLine&&(identical(other.id, id) || other.id == id)&&(identical(other.merchandiseId, merchandiseId) || other.merchandiseId == merchandiseId)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.sellingPlanId, sellingPlanId) || other.sellingPlanId == sellingPlanId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,id,merchandiseId,quantity,sellingPlanId);
+}
+
+@override
+String toString() {
     return 'CartLineUpdateInput(id: $id, merchandiseId: $merchandiseId, quantity: $quantity, sellingPlanId: $sellingPlanId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CartLineImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.merchandiseId, merchandiseId) ||
-                other.merchandiseId == merchandiseId) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
-            (identical(other.sellingPlanId, sellingPlanId) ||
-                other.sellingPlanId == sellingPlanId));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, merchandiseId, quantity, sellingPlanId);
-
-  /// Create a copy of CartLineUpdateInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CartLineImplCopyWith<_$CartLineImpl> get copyWith =>
-      __$$CartLineImplCopyWithImpl<_$CartLineImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CartLineImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _CartLine extends CartLineUpdateInput {
-  factory _CartLine(
-      {final String? id,
-      required final String merchandiseId,
-      required final int quantity,
-      final String? sellingPlanId}) = _$CartLineImpl;
-  _CartLine._() : super._();
 
-  factory _CartLine.fromJson(Map<String, dynamic> json) =
-      _$CartLineImpl.fromJson;
-
-  @override
-  String? get id;
-  @override
-  String get merchandiseId;
-  @override
-  int get quantity;
-  @override
-  String? get sellingPlanId;
-
-  /// Create a copy of CartLineUpdateInput
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CartLineImplCopyWith<_$CartLineImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+abstract mixin class _$CartLineCopyWith<$Res> implements $CartLineUpdateInputCopyWith<$Res> {
+  factory _$CartLineCopyWith(_CartLine value, $Res Function(_CartLine) _then) = __$CartLineCopyWithImpl;
+@override @useResult
+$Res call({
+ String? id, String merchandiseId, int quantity, String? sellingPlanId
+});
+
+
+
+
+}
+/// @nodoc
+class __$CartLineCopyWithImpl<$Res>
+    implements _$CartLineCopyWith<$Res> {
+  __$CartLineCopyWithImpl(this._self, this._then);
+
+  final _CartLine _self;
+  final $Res Function(_CartLine) _then;
+
+/// Create a copy of CartLineUpdateInput
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
+  return _then(_CartLine(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
+as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,sellingPlanId: freezed == sellingPlanId ? _self.sellingPlanId : sellingPlanId // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

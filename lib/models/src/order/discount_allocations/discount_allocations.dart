@@ -5,9 +5,8 @@ part 'discount_allocations.freezed.dart';
 part 'discount_allocations.g.dart';
 
 @freezed
-
 /// The discount allocations
-class DiscountAllocations with _$DiscountAllocations {
+abstract class DiscountAllocations with _$DiscountAllocations {
   const DiscountAllocations._();
 
   /// The discount allocations constructor

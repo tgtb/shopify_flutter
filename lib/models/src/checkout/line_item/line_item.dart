@@ -7,9 +7,8 @@ part 'line_item.freezed.dart';
 part 'line_item.g.dart';
 
 @freezed
-
 /// The line item
-class LineItem with _$LineItem {
+abstract class LineItem with _$LineItem {
   const LineItem._();
 
   /// The line item constructor
@@ -37,8 +36,8 @@ class LineItem with _$LineItem {
       discountAllocations: nodeJson['discountAllocations'] == null
           ? []
           : (nodeJson['discountAllocations'] as List)
-              .map((e) => DiscountAllocations.fromJson(e))
-              .toList(),
+                .map((e) => DiscountAllocations.fromJson(e))
+                .toList(),
       variantId: nodeJson['variant'] != null
           ? ProductVariantCheckout.fromJson(nodeJson['variant']).id
           : null,

@@ -5,9 +5,8 @@ part 'cart_cost.freezed.dart';
 part 'cart_cost.g.dart';
 
 @freezed
-
 /// The cart cost
-class CartCost with _$CartCost {
+abstract class CartCost with _$CartCost {
   const CartCost._();
 
   /// cart cost factory

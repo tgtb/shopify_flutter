@@ -353,3 +353,5 @@
 //     await _setShopifyUser(null, null);
 //   }
 // }
+
+// return null;

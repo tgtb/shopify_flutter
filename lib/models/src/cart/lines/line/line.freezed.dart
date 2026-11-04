@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'line.dart';
@@ -9,308 +9,348 @@ part of 'line.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Line _$LineFromJson(Map<String, dynamic> json) {
-  return _Line.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Line {
-  String? get id => throw _privateConstructorUsedError;
-  int? get quantity => throw _privateConstructorUsedError;
-  CartLineCost? get cost => throw _privateConstructorUsedError;
-  ProductVariant? get merchandise => throw _privateConstructorUsedError;
-  String? get variantId => throw _privateConstructorUsedError;
-  List<CartDiscountAllocation?>? get discountAllocations =>
-      throw _privateConstructorUsedError;
+
+ String? get id; int? get quantity; CartLineCost? get cost; ProductVariant? get merchandise; String? get variantId; List<CartDiscountAllocation?>? get discountAllocations;
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LineCopyWith<Line> get copyWith => _$LineCopyWithImpl<Line>(this as Line, _$identity);
 
   /// Serializes this Line to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $LineCopyWith<Line> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  final _this = this as Line;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Line&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.cost, _this.cost) || other.cost == _this.cost)&&(identical(other.merchandise, _this.merchandise) || other.merchandise == _this.merchandise)&&(identical(other.variantId, _this.variantId) || other.variantId == _this.variantId)&&const DeepCollectionEquality().equals(other.discountAllocations, _this.discountAllocations));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as Line;
+  return Object.hash(runtimeType,_this.id,_this.quantity,_this.cost,_this.merchandise,_this.variantId,const DeepCollectionEquality().hash(_this.discountAllocations));
+}
+
+@override
+String toString() {
+  final _this = this as Line;
+  return 'Line(id: ${_this.id}, quantity: ${_this.quantity}, cost: ${_this.cost}, merchandise: ${_this.merchandise}, variantId: ${_this.variantId}, discountAllocations: ${_this.discountAllocations})';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LineCopyWith<$Res> {
-  factory $LineCopyWith(Line value, $Res Function(Line) then) =
-      _$LineCopyWithImpl<$Res, Line>;
-  @useResult
-  $Res call(
-      {String? id,
-      int? quantity,
-      CartLineCost? cost,
-      ProductVariant? merchandise,
-      String? variantId,
-      List<CartDiscountAllocation?>? discountAllocations});
+abstract mixin class $LineCopyWith<$Res>  {
+  factory $LineCopyWith(Line value, $Res Function(Line) _then) = _$LineCopyWithImpl;
+@useResult
+$Res call({
+ String? id, int? quantity, CartLineCost? cost, ProductVariant? merchandise, String? variantId, List<CartDiscountAllocation?>? discountAllocations
+});
 
-  $CartLineCostCopyWith<$Res>? get cost;
-  $ProductVariantCopyWith<$Res>? get merchandise;
+
+$CartLineCostCopyWith<$Res>? get cost;$ProductVariantCopyWith<$Res>? get merchandise;
+
 }
-
 /// @nodoc
-class _$LineCopyWithImpl<$Res, $Val extends Line>
+class _$LineCopyWithImpl<$Res>
     implements $LineCopyWith<$Res> {
-  _$LineCopyWithImpl(this._value, this._then);
+  _$LineCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Line _self;
+  final $Res Function(Line) _then;
 
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? quantity = freezed,
-    Object? cost = freezed,
-    Object? merchandise = freezed,
-    Object? variantId = freezed,
-    Object? discountAllocations = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      quantity: freezed == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cost: freezed == cost
-          ? _value.cost
-          : cost // ignore: cast_nullable_to_non_nullable
-              as CartLineCost?,
-      merchandise: freezed == merchandise
-          ? _value.merchandise
-          : merchandise // ignore: cast_nullable_to_non_nullable
-              as ProductVariant?,
-      variantId: freezed == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discountAllocations: freezed == discountAllocations
-          ? _value.discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<CartDiscountAllocation?>?,
-    ) as $Val);
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? quantity = freezed,Object? cost = freezed,Object? merchandise = freezed,Object? variantId = freezed,Object? discountAllocations = freezed,}) {
+  return _then(Line(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int?,cost: freezed == cost ? _self.cost : cost // ignore: cast_nullable_to_non_nullable
+as CartLineCost?,merchandise: freezed == merchandise ? _self.merchandise : merchandise // ignore: cast_nullable_to_non_nullable
+as ProductVariant?,variantId: freezed == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
+as String?,discountAllocations: freezed == discountAllocations ? _self.discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
+as List<CartDiscountAllocation?>?,
+  ));
+}
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CartLineCostCopyWith<$Res>? get cost {
+    if (_self.cost == null) {
+    return null;
   }
 
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CartLineCostCopyWith<$Res>? get cost {
-    if (_value.cost == null) {
-      return null;
-    }
-
-    return $CartLineCostCopyWith<$Res>(_value.cost!, (value) {
-      return _then(_value.copyWith(cost: value) as $Val);
-    });
+  return $CartLineCostCopyWith<$Res>(_self.cost!, (value) {
+    return _then(_self.copyWith(cost: value));
+  });
+}/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCopyWith<$Res>? get merchandise {
+    if (_self.merchandise == null) {
+    return null;
   }
 
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductVariantCopyWith<$Res>? get merchandise {
-    if (_value.merchandise == null) {
-      return null;
-    }
-
-    return $ProductVariantCopyWith<$Res>(_value.merchandise!, (value) {
-      return _then(_value.copyWith(merchandise: value) as $Val);
-    });
-  }
+  return $ProductVariantCopyWith<$Res>(_self.merchandise!, (value) {
+    return _then(_self.copyWith(merchandise: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$LineImplCopyWith<$Res> implements $LineCopyWith<$Res> {
-  factory _$$LineImplCopyWith(
-          _$LineImpl value, $Res Function(_$LineImpl) then) =
-      __$$LineImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? id,
-      int? quantity,
-      CartLineCost? cost,
-      ProductVariant? merchandise,
-      String? variantId,
-      List<CartDiscountAllocation?>? discountAllocations});
 
-  @override
-  $CartLineCostCopyWith<$Res>? get cost;
-  @override
-  $ProductVariantCopyWith<$Res>? get merchandise;
+/// Adds pattern-matching-related methods to [Line].
+extension LinePatterns on Line {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Line value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Line() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Line value)  $default,){
+final _that = this;
+switch (_that) {
+case _Line():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Line value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Line() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  int? quantity,  CartLineCost? cost,  ProductVariant? merchandise,  String? variantId,  List<CartDiscountAllocation?>? discountAllocations)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Line() when $default != null:
+return $default(_that.id,_that.quantity,_that.cost,_that.merchandise,_that.variantId,_that.discountAllocations);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  int? quantity,  CartLineCost? cost,  ProductVariant? merchandise,  String? variantId,  List<CartDiscountAllocation?>? discountAllocations)  $default,) {final _that = this;
+switch (_that) {
+case _Line():
+return $default(_that.id,_that.quantity,_that.cost,_that.merchandise,_that.variantId,_that.discountAllocations);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  int? quantity,  CartLineCost? cost,  ProductVariant? merchandise,  String? variantId,  List<CartDiscountAllocation?>? discountAllocations)?  $default,) {final _that = this;
+switch (_that) {
+case _Line() when $default != null:
+return $default(_that.id,_that.quantity,_that.cost,_that.merchandise,_that.variantId,_that.discountAllocations);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$LineImplCopyWithImpl<$Res>
-    extends _$LineCopyWithImpl<$Res, _$LineImpl>
-    implements _$$LineImplCopyWith<$Res> {
-  __$$LineImplCopyWithImpl(_$LineImpl _value, $Res Function(_$LineImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? quantity = freezed,
-    Object? cost = freezed,
-    Object? merchandise = freezed,
-    Object? variantId = freezed,
-    Object? discountAllocations = freezed,
-  }) {
-    return _then(_$LineImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      quantity: freezed == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cost: freezed == cost
-          ? _value.cost
-          : cost // ignore: cast_nullable_to_non_nullable
-              as CartLineCost?,
-      merchandise: freezed == merchandise
-          ? _value.merchandise
-          : merchandise // ignore: cast_nullable_to_non_nullable
-              as ProductVariant?,
-      variantId: freezed == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discountAllocations: freezed == discountAllocations
-          ? _value._discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<CartDiscountAllocation?>?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LineImpl extends _Line {
-  _$LineImpl(
-      {this.id,
-      this.quantity,
-      this.cost,
-      this.merchandise,
-      this.variantId,
-      final List<CartDiscountAllocation?>? discountAllocations})
-      : _discountAllocations = discountAllocations,
-        super._();
 
-  factory _$LineImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LineImplFromJson(json);
+class _Line extends Line {
+   _Line({this.id, this.quantity, this.cost, this.merchandise, this.variantId,  List<CartDiscountAllocation?>? discountAllocations}): _discountAllocations = discountAllocations,super._();
+  factory _Line.fromJson(Map<String, dynamic> json) => _$LineFromJson(json);
 
-  @override
-  final String? id;
-  @override
-  final int? quantity;
-  @override
-  final CartLineCost? cost;
-  @override
-  final ProductVariant? merchandise;
-  @override
-  final String? variantId;
-  final List<CartDiscountAllocation?>? _discountAllocations;
-  @override
-  List<CartDiscountAllocation?>? get discountAllocations {
-    final value = _discountAllocations;
-    if (value == null) return null;
-    if (_discountAllocations is EqualUnmodifiableListView)
-      return _discountAllocations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+@override final  String? id;
+@override final  int? quantity;
+@override final  CartLineCost? cost;
+@override final  ProductVariant? merchandise;
+@override final  String? variantId;
+ final  List<CartDiscountAllocation?>? _discountAllocations;
+@override List<CartDiscountAllocation?>? get discountAllocations {
+  final value = _discountAllocations;
+  if (value == null) return null;
+  if (_discountAllocations is EqualUnmodifiableListView) return _discountAllocations;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
 
-  @override
-  String toString() {
+
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LineCopyWith<_Line> get copyWith => __$LineCopyWithImpl<_Line>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$LineToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Line&&(identical(other.id, id) || other.id == id)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.merchandise, merchandise) || other.merchandise == merchandise)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&const DeepCollectionEquality().equals(other.discountAllocations, _discountAllocations));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,id,quantity,cost,merchandise,variantId,const DeepCollectionEquality().hash(_discountAllocations));
+}
+
+@override
+String toString() {
     return 'Line(id: $id, quantity: $quantity, cost: $cost, merchandise: $merchandise, variantId: $variantId, discountAllocations: $discountAllocations)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LineImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
-            (identical(other.cost, cost) || other.cost == cost) &&
-            (identical(other.merchandise, merchandise) ||
-                other.merchandise == merchandise) &&
-            (identical(other.variantId, variantId) ||
-                other.variantId == variantId) &&
-            const DeepCollectionEquality()
-                .equals(other._discountAllocations, _discountAllocations));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, quantity, cost, merchandise,
-      variantId, const DeepCollectionEquality().hash(_discountAllocations));
-
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LineImplCopyWith<_$LineImpl> get copyWith =>
-      __$$LineImplCopyWithImpl<_$LineImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LineImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Line extends Line {
-  factory _Line(
-      {final String? id,
-      final int? quantity,
-      final CartLineCost? cost,
-      final ProductVariant? merchandise,
-      final String? variantId,
-      final List<CartDiscountAllocation?>? discountAllocations}) = _$LineImpl;
-  _Line._() : super._();
 
-  factory _Line.fromJson(Map<String, dynamic> json) = _$LineImpl.fromJson;
-
-  @override
-  String? get id;
-  @override
-  int? get quantity;
-  @override
-  CartLineCost? get cost;
-  @override
-  ProductVariant? get merchandise;
-  @override
-  String? get variantId;
-  @override
-  List<CartDiscountAllocation?>? get discountAllocations;
-
-  /// Create a copy of Line
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LineImplCopyWith<_$LineImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+abstract mixin class _$LineCopyWith<$Res> implements $LineCopyWith<$Res> {
+  factory _$LineCopyWith(_Line value, $Res Function(_Line) _then) = __$LineCopyWithImpl;
+@override @useResult
+$Res call({
+ String? id, int? quantity, CartLineCost? cost, ProductVariant? merchandise, String? variantId, List<CartDiscountAllocation?>? discountAllocations
+});
+
+
+@override $CartLineCostCopyWith<$Res>? get cost;@override $ProductVariantCopyWith<$Res>? get merchandise;
+
+}
+/// @nodoc
+class __$LineCopyWithImpl<$Res>
+    implements _$LineCopyWith<$Res> {
+  __$LineCopyWithImpl(this._self, this._then);
+
+  final _Line _self;
+  final $Res Function(_Line) _then;
+
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? quantity = freezed,Object? cost = freezed,Object? merchandise = freezed,Object? variantId = freezed,Object? discountAllocations = freezed,}) {
+  return _then(_Line(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int?,cost: freezed == cost ? _self.cost : cost // ignore: cast_nullable_to_non_nullable
+as CartLineCost?,merchandise: freezed == merchandise ? _self.merchandise : merchandise // ignore: cast_nullable_to_non_nullable
+as ProductVariant?,variantId: freezed == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
+as String?,discountAllocations: freezed == discountAllocations ? _self._discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
+as List<CartDiscountAllocation?>?,
+  ));
+}
+
+/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CartLineCostCopyWith<$Res>? get cost {
+    if (_self.cost == null) {
+    return null;
+  }
+
+  return $CartLineCostCopyWith<$Res>(_self.cost!, (value) {
+    return _then(_self.copyWith(cost: value));
+  });
+}/// Create a copy of Line
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCopyWith<$Res>? get merchandise {
+    if (_self.merchandise == null) {
+    return null;
+  }
+
+  return $ProductVariantCopyWith<$Res>(_self.merchandise!, (value) {
+    return _then(_self.copyWith(merchandise: value));
+  });
+}
+}
+
+// dart format on

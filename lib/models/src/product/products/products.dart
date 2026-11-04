@@ -5,9 +5,8 @@ part 'products.freezed.dart';
 part 'products.g.dart';
 
 @freezed
-
 /// The products
-class Products with _$Products {
+abstract class Products with _$Products {
   const Products._();
 
   /// The products constructor
@@ -18,9 +17,9 @@ class Products with _$Products {
 
   /// The products from graphjson factory
   factory Products.fromGraphJson(Map<String, dynamic> json) => Products(
-        productList: _getProductList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false,
-      );
+    productList: _getProductList(json),
+    hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false,
+  );
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
     return (json['edges'] as List?)

@@ -4,9 +4,8 @@ part 'currency.freezed.dart';
 part 'currency.g.dart';
 
 @freezed
-
 /// The Currency class
-class Currency with _$Currency {
+abstract class Currency with _$Currency {
   /// The Currency constructor
   const factory Currency({
     required String isoCode,

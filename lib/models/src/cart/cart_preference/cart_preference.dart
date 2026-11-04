@@ -6,9 +6,8 @@ part 'cart_preference.freezed.dart';
 part 'cart_preference.g.dart';
 
 @freezed
-
 /// The cart preference
-class CartPreference with _$CartPreference {
+abstract class CartPreference with _$CartPreference {
   const CartPreference._();
 
   /// The cart preference constructor
