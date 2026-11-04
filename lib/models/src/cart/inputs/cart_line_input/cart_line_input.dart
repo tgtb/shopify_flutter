@@ -10,7 +10,6 @@ abstract class CartLineInput with _$CartLineInput {
 
   /// The cart line input constructor
   factory CartLineInput({
-    String? id,
     required String merchandiseId,
     required int quantity,
     String? sellingPlanId,

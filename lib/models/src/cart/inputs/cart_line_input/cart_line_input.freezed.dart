@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartLineInput {
 
- String? get id; String get merchandiseId; int get quantity; String? get sellingPlanId;
+ String get merchandiseId; int get quantity; String? get sellingPlanId;
 /// Create a copy of CartLineInput
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $CartLineInputCopyWith<CartLineInput> get copyWith => _$CartLineInputCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as CartLineInput;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartLineInput&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.merchandiseId, _this.merchandiseId) || other.merchandiseId == _this.merchandiseId)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.sellingPlanId, _this.sellingPlanId) || other.sellingPlanId == _this.sellingPlanId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartLineInput&&(identical(other.merchandiseId, _this.merchandiseId) || other.merchandiseId == _this.merchandiseId)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.sellingPlanId, _this.sellingPlanId) || other.sellingPlanId == _this.sellingPlanId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as CartLineInput;
-  return Object.hash(runtimeType,_this.id,_this.merchandiseId,_this.quantity,_this.sellingPlanId);
+  return Object.hash(runtimeType,_this.merchandiseId,_this.quantity,_this.sellingPlanId);
 }
 
 @override
 String toString() {
   final _this = this as CartLineInput;
-  return 'CartLineInput(id: ${_this.id}, merchandiseId: ${_this.merchandiseId}, quantity: ${_this.quantity}, sellingPlanId: ${_this.sellingPlanId})';
+  return 'CartLineInput(merchandiseId: ${_this.merchandiseId}, quantity: ${_this.quantity}, sellingPlanId: ${_this.sellingPlanId})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $CartLineInputCopyWith<$Res>  {
   factory $CartLineInputCopyWith(CartLineInput value, $Res Function(CartLineInput) _then) = _$CartLineInputCopyWithImpl;
 @useResult
 $Res call({
- String? id, String merchandiseId, int quantity, String? sellingPlanId
+ String merchandiseId, int quantity, String? sellingPlanId
 });
 
 
@@ -71,10 +71,9 @@ class _$CartLineInputCopyWithImpl<$Res>
 
 /// Create a copy of CartLineInput
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
   return _then(CartLineInput(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
+merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
 as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,sellingPlanId: freezed == sellingPlanId ? _self.sellingPlanId : sellingPlanId // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -162,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartLineInput() when $default != null:
-return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+return $default(_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
   return orElse();
 
 }
@@ -183,10 +182,10 @@ return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId)
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String merchandiseId,  int quantity,  String? sellingPlanId)  $default,) {final _that = this;
 switch (_that) {
 case _CartLineInput():
-return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+return $default(_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +202,10 @@ return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId)
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String merchandiseId,  int quantity,  String? sellingPlanId)?  $default,) {final _that = this;
 switch (_that) {
 case _CartLineInput() when $default != null:
-return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
+return $default(_that.merchandiseId,_that.quantity,_that.sellingPlanId);case _:
   return null;
 
 }
@@ -218,10 +217,9 @@ return $default(_that.id,_that.merchandiseId,_that.quantity,_that.sellingPlanId)
 @JsonSerializable()
 
 class _CartLineInput extends CartLineInput {
-   _CartLineInput({this.id, required this.merchandiseId, required this.quantity, this.sellingPlanId}): super._();
+   _CartLineInput({required this.merchandiseId, required this.quantity, this.sellingPlanId}): super._();
   factory _CartLineInput.fromJson(Map<String, dynamic> json) => _$CartLineInputFromJson(json);
 
-@override final  String? id;
 @override final  String merchandiseId;
 @override final  int quantity;
 @override final  String? sellingPlanId;
@@ -239,18 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartLineInput&&(identical(other.id, id) || other.id == id)&&(identical(other.merchandiseId, merchandiseId) || other.merchandiseId == merchandiseId)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.sellingPlanId, sellingPlanId) || other.sellingPlanId == sellingPlanId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartLineInput&&(identical(other.merchandiseId, merchandiseId) || other.merchandiseId == merchandiseId)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.sellingPlanId, sellingPlanId) || other.sellingPlanId == sellingPlanId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,merchandiseId,quantity,sellingPlanId);
+    return Object.hash(runtimeType,merchandiseId,quantity,sellingPlanId);
 }
 
 @override
 String toString() {
-    return 'CartLineInput(id: $id, merchandiseId: $merchandiseId, quantity: $quantity, sellingPlanId: $sellingPlanId)';
+    return 'CartLineInput(merchandiseId: $merchandiseId, quantity: $quantity, sellingPlanId: $sellingPlanId)';
 }
 
 
@@ -261,7 +259,7 @@ abstract mixin class _$CartLineInputCopyWith<$Res> implements $CartLineInputCopy
   factory _$CartLineInputCopyWith(_CartLineInput value, $Res Function(_CartLineInput) _then) = __$CartLineInputCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String merchandiseId, int quantity, String? sellingPlanId
+ String merchandiseId, int quantity, String? sellingPlanId
 });
 
 
@@ -278,10 +276,9 @@ class __$CartLineInputCopyWithImpl<$Res>
 
 /// Create a copy of CartLineInput
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? merchandiseId = null,Object? quantity = null,Object? sellingPlanId = freezed,}) {
   return _then(_CartLineInput(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
+merchandiseId: null == merchandiseId ? _self.merchandiseId : merchandiseId // ignore: cast_nullable_to_non_nullable
 as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,sellingPlanId: freezed == sellingPlanId ? _self.sellingPlanId : sellingPlanId // ignore: cast_nullable_to_non_nullable
 as String?,

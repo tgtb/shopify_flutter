@@ -1,12 +1,9 @@
 name: shopify_flutter
 description: A Flutter package to seamlessly connect your Shopify store with your app.
 version: 2.2.7
-homepage: https://github.com/imsujan276/shopify_flutter
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-tags:
-  - shopify
-  - shopify_flutter
 
 environment:
   sdk: ^3.13.5
@@ -19,7 +16,6 @@ dependencies:
   freezed_annotation: ^3.1.0
   json_annotation: ^4.12.0 #BSD-3
   json_serializable: ^6.15.2
-  shared_preferences: ^2.5.6 #BSD-3
   intl: ^0.20.3
   url_launcher: ^6.3.3 #BSD-3
 
@@ -31,6 +27,3 @@ dev_dependencies:
   freezed: 4.0.3
   analyzer: ^14.7.0
 
-screenshots:
- - description: 'Search Example of the shopify storefront'
-   path: example/screenshot/search.png
